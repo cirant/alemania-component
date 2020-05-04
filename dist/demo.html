@@ -4,9 +4,14 @@
 <script src="./alemana.js"></script>
 
 
-<alemana-button></alemana-button>
 
-<alemana-card></alemana-card>
+<alemana-card>
+  <alemana-typography>hola </alemana-typography>
+  <alemana-button id="hola">click me </alemana-button>
+</alemana-card>
 
-<alemana-typography></alemana-typography>
-
+<script>
+  document.getElementById('hola').addEventListener('click', function(){
+    console.log('======== CLICK =======');
+  })
+</script>
