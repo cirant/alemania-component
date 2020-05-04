@@ -5,14 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:wc": "npm run build -- --target wc --name alemani 'src/components/*.vue'",
+    "build:wc": "npm run build -- --target wc --name alemana 'src/components/*.vue'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.4",
     "vue": "^2.6.11"
   },
-  "main": "dist",
+  "main": "dist/alemana",
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.3.0",
     "@vue/cli-plugin-eslint": "~4.3.0",

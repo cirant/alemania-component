@@ -1036,13 +1036,13 @@ var Typographyshadow_component = normalizeComponent(
 
 
 
-window.customElements.define('alemani-button', vue_wc_wrapper(external_Vue_default.a, Buttonshadow))
+window.customElements.define('alemana-button', vue_wc_wrapper(external_Vue_default.a, Buttonshadow))
 
 
-window.customElements.define('alemani-card', vue_wc_wrapper(external_Vue_default.a, Cardshadow))
+window.customElements.define('alemana-card', vue_wc_wrapper(external_Vue_default.a, Cardshadow))
 
 
-window.customElements.define('alemani-typography', vue_wc_wrapper(external_Vue_default.a, Typographyshadow))
+window.customElements.define('alemana-typography', vue_wc_wrapper(external_Vue_default.a, Typographyshadow))
 
 /***/ }),
 
@@ -1230,4 +1230,4 @@ __webpack_require__.r(__webpack_exports__);
 /***/ })
 
 /******/ });
-//# sourceMappingURL=alemani.js.map
+//# sourceMappingURL=alemana.js.map
