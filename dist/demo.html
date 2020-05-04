@@ -1,0 +1,15 @@
+<meta charset="utf-8">
+<title>custom-element-name demo</title>
+<script src="https://unpkg.com/vue"></script>
+<script src="./custom-element-name.js"></script>
+
+
+<custom-element-name id="mybtn">hola</custom-element-name>
+
+<script>
+  document.getElementById('mybtn').addEventListener('add', function(){
+    console.log('una nueva version')
+  })
+</script>
+
+
