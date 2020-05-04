@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:wc": "npm run build -- --target wc --inline-vue --name custom-element-name ./src/components/ButtonComponent.vue",
+    "build:wc": "npm run build -- --target wc --name alemani 'src/components/*.vue'",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

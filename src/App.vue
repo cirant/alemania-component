@@ -1,20 +1,86 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App"></HelloWorld>
-    <Buttom @add="mainClick">hola</Buttom>
+    <Card>
+      <div>
+        <Typography variant="h4" weight="bold" type="primary">DIAGNÓSTICO</Typography>
+        <Typography variant="span">Última actualización: 10 / 07 / 2017, 20:30 hrs.</Typography>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" />
+            </th>
+            <th>nombre del diagnóstico</th>
+            <th>estado</th>
+            <th>fecha</th>
+            <th>acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>Afecciones respiratorias debidas a inhalación de gases, humos…</td>
+            <td>confirmado</td>
+            <td>2014-12-24 24:15:00</td>
+            <td>ENO</td>
+            <td>GES</td>
+            <td>
+              <div class="actions-container">
+                <button>Editar</button>
+                <button>Eliminar</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <Buttom>Nuevo Diagnóstico</Buttom>
+    </Card>
+    <br />
+    <Card align="left">
+      <Typography variant="h1">text h1</Typography>
+      <br />
+      <Typography variant="h2">text h2</Typography>
+      <br />
+      <Typography variant="h3">text h3</Typography>
+      <br />
+      <Typography variant="h4">text h4</Typography>
+      <br />
+      <Typography variant="h5">text h5</Typography>
+      <br />
+      <Typography variant="h6">text h6</Typography>
+      <br />
+      <Typography variant="p">text p</Typography>
+      <br />
+      <Typography variant="p" weight="bold">text bold</Typography>
+      <br />
+      <Typography variant="p" weight="lighter">text lighter</Typography>
+      <br />
+      <Typography variant="p">text normal</Typography>
+      <br />
+      <Typography type="primary">primary color</Typography>
+      <br />
+      <Typography type="error">error color</Typography>
+      <br />
+    </Card>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import Buttom from "./components/ButtonComponent.vue";
+// import HelloWorld from "./components/HelloWorld.vue";
+import Buttom from "./components/Button.vue";
+import Card from "./components/Card";
+import Typography from "./components/Typography";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
-    Buttom
+    Card,
+    Buttom,
+    Typography
   },
   methods: {
     mainClick() {
@@ -32,5 +98,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.table {
+  width: 100%;
+  margin-bottom: 35px;
 }
 </style>
