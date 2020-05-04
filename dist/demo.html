@@ -8,10 +8,15 @@
 <alemana-card>
   <alemana-typography>hola </alemana-typography>
   <alemana-button id="hola">click me </alemana-button>
+  <alemana-button id="world">click me </alemana-button>
 </alemana-card>
 
 <script>
-  document.getElementById('hola').addEventListener('click', function(){
-    console.log('======== CLICK =======');
+  document.getElementById('hola').addEventListener('onClick', function(){
+    console.log('======== CLICK hola =======');
+  })
+
+   document.getElementById('world').addEventListener('onClick', function(){
+    console.log('======== CLICK world =======');
   })
 </script>

@@ -37,7 +37,7 @@
         </tbody>
       </table>
 
-      <Buttom @click="mainClick()">Nuevo Diagnóstico</Buttom>
+      <Buttom @onClick="mainClick()">Nuevo Diagnóstico</Buttom>
     </Card>
     <br />
     <Card align="left">

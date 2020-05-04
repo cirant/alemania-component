@@ -1,5 +1,7 @@
 <template>
-  <div class="card" ref="slotContainer"></div>
+  <div class="card" ref="slotContainer">
+    <slot />
+  </div>
 </template>
 
 <script>
@@ -12,10 +14,10 @@ export default {
   methods: {
     // This is where the magic happens
     fixSlot() {
-      // remove all the innerHTML that vue has place where the slot should be
-      this.$refs.slotContainer.innerHTML = "";
-      // // replace it with a new slot, if you are using named slot you can just add attributes to the slot
-      this.$refs.slotContainer.append(document.createElement("slot"));
+      // // remove all the innerHTML that vue has place where the slot should be
+      // // // replace it with a new slot, if you are using named slot you can just add attributes to the slot
+      // this.$refs.slotContainer.innerHTML = "";
+      // this.$refs.slotContainer.append(document.createElement("slot"));
     }
   }
 };
