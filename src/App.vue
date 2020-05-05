@@ -66,6 +66,10 @@
       <Typography type="error">error color</Typography>
       <br />
     </Card>
+    <br />
+    <Card>
+      <Select />
+    </Card>
   </div>
 </template>
 
@@ -74,13 +78,15 @@
 import Buttom from "./components/Button.vue";
 import Card from "./components/Card";
 import Typography from "./components/Typography";
+import Select from "./components/Select";
 
 export default {
   name: "App",
   components: {
     Card,
     Buttom,
-    Typography
+    Typography,
+    Select
   },
   methods: {
     mainClick() {
