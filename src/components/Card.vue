@@ -15,8 +15,8 @@ export default {
     fixSlot() {
       // // remove all the innerHTML that vue has place where the slot should be
       // // // replace it with a new slot, if you are using named slot you can just add attributes to the slot
-      // this.$refs.slotContainer.innerHTML = "";
-      // this.$refs.slotContainer.append(document.createElement("slot"));
+      this.$refs.slotContainer.innerHTML = "";
+      this.$refs.slotContainer.append(document.createElement("slot"));
     }
   }
 };
