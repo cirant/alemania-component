@@ -1,10 +1,55 @@
 <template>
   <div id="app">
-    <Card>
+    <Card align="left">
       <div>
         <Typography variant="h4" weight="bold" type="primary">DIAGNÓSTICO</Typography>
-        <Typography variant="span">Última actualización: 10 / 07 / 2017, 20:30 hrs.</Typography>
+        <Typography variant="span" size="12">Última actualización: 10 / 07 / 2017, 20:30 hrs.</Typography>
       </div>
+      <Table>
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" />
+            </th>
+            <th>nombre del diagnóstico</th>
+            <th>estado</th>
+            <th>fecha</th>
+            <td colspan="2"></td>
+            <th>acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td align="center">
+              <input type="checkbox" />
+            </td>
+            <td>
+              <Typography
+                variant="p"
+                type="primary"
+              >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
+            </td>
+            <td>
+              <Status value="confirmado" />
+            </td>
+            <td>
+              <Typography>2014-12-24 24:15:00</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">ENO</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">GES</Typography>
+            </td>
+            <td>
+              <div class="actions-container">
+                <Buttom variant="text" icon="edit">Editar</Buttom>
+                <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </Table>
       <table class="table">
         <thead>
           <tr>
@@ -22,15 +67,86 @@
             <td>
               <input type="checkbox" />
             </td>
-            <td>Afecciones respiratorias debidas a inhalación de gases, humos…</td>
-            <td>confirmado</td>
-            <td>2014-12-24 24:15:00</td>
-            <td>ENO</td>
-            <td>GES</td>
+            <td>
+              <Typography
+                variant="p"
+                type="primary"
+              >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
+            </td>
+            <td>
+              <Status value="confirmado" />
+            </td>
+            <td>
+              <Typography>2014-12-24 24:15:00</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">ENO</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">GES</Typography>
+            </td>
             <td>
               <div class="actions-container">
-                <button>Editar</button>
-                <button>Eliminar</button>
+                <Buttom variant="text" icon="edit">Editar</Buttom>
+                <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>
+              <Typography
+                variant="p"
+                type="primary"
+              >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
+            </td>
+            <td>
+              <Status value="sospecha" />
+            </td>
+            <td>
+              <Typography>2014-12-24 24:15:00</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">ENO</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">GES</Typography>
+            </td>
+            <td>
+              <div class="actions-container">
+                <Buttom variant="text" icon="edit">Editar</Buttom>
+                <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>
+              <Typography
+                variant="p"
+                type="primary"
+              >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
+            </td>
+            <td>
+              <Status />
+            </td>
+            <td>
+              <Typography>2014-12-24 24:15:00</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">ENO</Typography>
+            </td>
+            <td>
+              <Typography weight="bold">GES</Typography>
+            </td>
+            <td>
+              <div class="actions-container">
+                <Buttom variant="text" icon="edit">Editar</Buttom>
+                <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
               </div>
             </td>
           </tr>
@@ -41,30 +157,26 @@
     </Card>
     <br />
     <Card align="left">
-      <Typography variant="h1">text h1</Typography>
-      <br />
-      <Typography variant="h2">text h2</Typography>
-      <br />
-      <Typography variant="h3">text h3</Typography>
-      <br />
-      <Typography variant="h4">text h4</Typography>
-      <br />
-      <Typography variant="h5">text h5</Typography>
-      <br />
-      <Typography variant="h6">text h6</Typography>
-      <br />
-      <Typography variant="p">text p</Typography>
-      <br />
-      <Typography variant="p" weight="bold">text bold</Typography>
-      <br />
-      <Typography variant="p" weight="lighter">text lighter</Typography>
-      <br />
-      <Typography variant="p">text normal</Typography>
-      <br />
-      <Typography type="primary">primary color</Typography>
-      <br />
-      <Typography type="error">error color</Typography>
-      <br />
+      <div class="flex">
+        Typography
+        <Typography variant="h1">text h1 - h6</Typography>
+        <Typography variant="h1" size="16">text h6</Typography>
+        <Typography variant="p">text p</Typography>
+        <Typography variant="p" weight="bold">text bold</Typography>
+        <Typography variant="p" weight="lighter">text lighter</Typography>
+        <Typography variant="p">text normal</Typography>
+        <Typography type="primary">primary color</Typography>
+        <Typography type="error">error color</Typography>
+      </div>
+      <div class="flex">
+        Button
+        <Buttom>Default</Buttom>
+        <Buttom color="error">Error</Buttom>
+        <Buttom variant="text">Default text button</Buttom>
+        <Buttom variant="text" color="error">Error text button</Buttom>
+        <Buttom variant="text" icon="edit">icon edit</Buttom>
+        <Buttom variant="text" color="error" icon="trash">icon trash</Buttom>
+      </div>
     </Card>
     <br />
     <Card>
@@ -79,6 +191,8 @@ import Buttom from "./components/Button.vue";
 import Card from "./components/Card";
 import Typography from "./components/Typography";
 import Select from "./components/Select";
+import Status from "./components/Status";
+import Table from "./components/Table";
 
 export default {
   name: "App",
@@ -86,7 +200,9 @@ export default {
     Card,
     Buttom,
     Typography,
-    Select
+    Select,
+    Status,
+    Table
   },
   methods: {
     mainClick() {
@@ -108,5 +224,10 @@ export default {
 .table {
   width: 100%;
   margin-bottom: 35px;
+}
+.flex {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 8px;
 }
 </style>

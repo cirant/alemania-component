@@ -6,6 +6,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -18,6 +20,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -30,6 +34,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -42,6 +48,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -54,6 +62,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -66,6 +76,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -78,6 +90,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -90,6 +104,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -102,6 +118,8 @@
       fontBold: weight === 'bold',
       primary: type === 'primary',
       error: type === 'error',
+      font16: size === '16',
+      font12: size === '12',
       fontLighter: weight === 'lighter'
     }"
   >
@@ -112,7 +130,7 @@
 <script>
 export default {
   name: "Typography",
-  props: ["weight", "variant", "type"]
+  props: ["weight", "variant", "type", "size"]
 };
 </script>
 
@@ -120,10 +138,19 @@ export default {
 <style scoped>
 .root {
   display: inline;
+  margin: 0px;
+  font-size: 14px;
 }
 .main-styles {
   font-weight: inherit;
   font-family: inherit;
+}
+
+.font16 {
+  font-size: 16px;
+}
+.font12 {
+  font-size: 12px;
 }
 .primary {
   color: #01ccad;

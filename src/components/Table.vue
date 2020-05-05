@@ -1,12 +1,13 @@
 <template>
-  <div class="card" ref="slotContainer">
+  <table class="table" ref="slotContainer">
     <slot />
-  </div>
+  </table>
 </template>
 
 <script>
 export default {
-  name: "Card",
+  name: "Status",
+  props: ["value"],
   mounted() {
     this.$nextTick().then(this.fixSlot.bind(this));
   },
@@ -15,22 +16,25 @@ export default {
     fixSlot() {
       // // remove all the innerHTML that vue has place where the slot should be
       // // // replace it with a new slot, if you are using named slot you can just add attributes to the slot
-      // this.$refs.slotContainer.innerHTML = "";
-      // this.$refs.slotContainer.append(document.createElement("slot"));
+      this.$refs.slotContainer.innerHTML = "";
+      this.$refs.slotContainer.append(document.createElement("slot"));
     }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scss scoped>
-.card {
-  background-color: white;
-  border-radius: 4px;
-  box-shadow: 0px 2px 4px #9da0a4;
-  padding: 23px 46px;
-  width: 100%;
-  text-align: left;
-  box-sizing: border-box;
+<style scoped>
+.table {
+  border-collapse: collapse;
+}
+.table tr {
+  border-bottom: 1px solid #e8e8e8;
+}
+.table th {
+  padding: 16px 8px 18px;
+}
+.table thead {
+  background-color: #fafafa;
 }
 </style>
