@@ -8,13 +8,13 @@
 export default {
   name: "Card",
   mounted() {
-    this.$nextTick().then(this.fixSlot.bind(this));
+    console.log("==============================");
+    if (process.env.NODE_ENV !== "development") {
+      this.$nextTick().then(this.fixSlot.bind(this));
+    }
   },
   methods: {
-    // This is where the magic happens
     fixSlot() {
-      // // remove all the innerHTML that vue has place where the slot should be
-      // // // replace it with a new slot, if you are using named slot you can just add attributes to the slot
       this.$refs.slotContainer.innerHTML = "";
       this.$refs.slotContainer.append(document.createElement("slot"));
     }
@@ -32,5 +32,6 @@ export default {
   width: 100%;
   text-align: left;
   box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
 }
 </style>

@@ -3,14 +3,20 @@
 <script src="https://unpkg.com/vue"></script>
 <script src="./alemana.js"></script>
 
+<alemana-card align="left">
+      <div>
+        <alemana-typography variant="h4" weight="bold" type="primary">DIAGNÓSTICO</alemana-typography>
+        <alemana-typography variant="span" size="12">Última actualización: 10 / 07 / 2017, 20:30 hrs.</alemana-typography>
+      </div>
+      <alemana-table>
+        
+      </alemana-table>
 
-<alemana-button></alemana-button>
+      <alemana-button id="hola">Nuevo Diagnóstico</alemana-button>
+    </alemana-card>
 
-<alemana-card></alemana-card>
-
-<alemana-status></alemana-status>
-
-<alemana-table></alemana-table>
-
-<alemana-typography></alemana-typography>
-
+<script>
+  document.getElementById('hola').addEventListener('onClick', function(){
+    console.log('======== CLICK =======');
+  })
+</script>

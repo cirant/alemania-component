@@ -140,10 +140,11 @@ export default {
   display: inline;
   margin: 0px;
   font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 .main-styles {
   font-weight: inherit;
-  font-family: inherit;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .font16 {

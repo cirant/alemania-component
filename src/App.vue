@@ -8,47 +8,16 @@
       <Table>
         <thead>
           <tr>
-            <th>
+            <th align="center">
               <input type="checkbox" />
             </th>
             <th>nombre del diagnóstico</th>
             <th>estado</th>
             <th>fecha</th>
-            <td colspan="2"></td>
+            <th colspan="2"></th>
             <th>acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td align="center">
-              <input type="checkbox" />
-            </td>
-            <td>
-              <Typography
-                variant="p"
-                type="primary"
-              >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
-            </td>
-            <td>
-              <Status value="confirmado" />
-            </td>
-            <td>
-              <Typography>2014-12-24 24:15:00</Typography>
-            </td>
-            <td>
-              <Typography weight="bold">ENO</Typography>
-            </td>
-            <td>
-              <Typography weight="bold">GES</Typography>
-            </td>
-            <td>
-              <div class="actions-container">
-                <Buttom variant="text" icon="edit">Editar</Buttom>
-                <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
-              </div>
-            </td>
-          </tr>
-        </tbody>
       </Table>
       <table class="table">
         <thead>
@@ -188,6 +157,7 @@ import Card from "./components/Card";
 import Typography from "./components/Typography";
 import Status from "./components/Status";
 import Table from "./components/Table";
+// import TableContent from "./components/TableContent";
 
 export default {
   name: "App",
@@ -197,6 +167,7 @@ export default {
     Typography,
     Status,
     Table
+    // TableContent
   },
   methods: {
     mainClick() {

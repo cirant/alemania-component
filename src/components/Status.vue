@@ -34,6 +34,7 @@ export default {
 .text {
   padding-left: 8px;
   font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 .confirm {
