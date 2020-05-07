@@ -7,7 +7,12 @@
         <Typography variant="span" size="12">Última actualización: 10 / 07 / 2017, 20:30 hrs.</Typography>
       </div>
       <Table :columns="tableData.headers" :rows="tableData.body"></Table>
-      <TableDiagnostico :columns="tableDiagnostico.headers" :rows="tableDiagnostico.body"></TableDiagnostico>
+      <TableDiagnostico
+        @allClick="allClick"
+        @clickOne="rowClick"
+        :columns="tableDiagnostico.headers"
+        :rows="tableDiagnostico.body"
+      ></TableDiagnostico>
       <table class="table"></table>
       <Buttom @onClick="mainClick">Nuevo Diagnóstico</Buttom>
     </Card>
@@ -67,7 +72,7 @@ export default {
     return {
       tableData: {
         headers: {
-          checkboxArea: "",
+          checkbox: "",
           diagnostico: "Nombre del diagnóstico",
           fecha: "Fecha",
           estado: "Estado",
@@ -90,7 +95,7 @@ export default {
       },
       tableDiagnostico: {
         headers: {
-          // checkboxArea: "",
+          checkbox: false,
           diagnostico: "Nombre del diagnóstico",
           estado: "Estado",
           fecha: "Fecha",
@@ -100,7 +105,7 @@ export default {
         },
         body: [
           {
-            // checkboxArea: "active",
+            checkbox: false,
             diagnostico: {
               variant: "p",
               type: "primary",
@@ -141,7 +146,7 @@ export default {
             ]
           },
           {
-            // checkboxArea: "active",
+            checkbox: false,
             diagnostico: {
               variant: "p",
               type: "primary",
@@ -182,7 +187,7 @@ export default {
             ]
           },
           {
-            // checkboxArea: "active",
+            checkbox: false,
             diagnostico: {
               variant: "p",
               type: "primary",
@@ -229,6 +234,22 @@ export default {
   methods: {
     mainClick() {
       console.log("este es un main click");
+    },
+    rowClick(position, status) {
+      console.log("este es un main click", position, status);
+      console.log(
+        "this.$data.tableDiagnostico.body[position]",
+        this.tableDiagnostico.body[position].checkbox
+      );
+
+      this.tableDiagnostico.body[position].checkbox = status;
+    },
+    allClick(e) {
+      console.log("click en todos", e);
+      this.tableDiagnostico.headers.checkbox = e;
+      this.tableDiagnostico.body.forEach(element => {
+        element.checkbox = e;
+      });
     }
   }
 };

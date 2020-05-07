@@ -86,6 +86,7 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 .btn:active::after {
   content: "";

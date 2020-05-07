@@ -3,15 +3,55 @@
     <table class="table">
       <thead>
         <tr v-if="columns">
-          <th v-for="( column, prop ) in columns" :key="prop">{{ column }}</th>
+          <th
+            v-for="( column, prop ) in columns"
+            :key="prop"
+            v-bind:class="{
+            textCenter: prop==='checkbox'
+          }"
+          >
+            <input
+              :key="column"
+              v-if="prop === 'checkbox'"
+              :checked="column"
+              type="checkbox"
+              @click="(e)=>{
+              e.preventDefault();
+              $emit('allClick', e.target.checked);
+              }"
+            />
+            {{ prop !== 'checkbox' ? column : '' }}
+          </th>
         </tr>
       </thead>
       <tbody v-if="rows">
-        <tr v-for="( row, index ) in rows" :key="index">
-          <td v-for="( _, prop ) in columns" :key="prop">
+        <tr
+          v-for="( row, index ) in rows"
+          :key="index"
+          v-bind:class="{
+          editinRow: row.checkbox
+        }"
+        >
+          <td
+            v-for="( _, prop ) in columns"
+            :key="prop"
+            v-bind:class="{
+            textCenter: prop==='checkbox'
+          }"
+          >
             <slot :row="row" :prop="prop">
+              <input
+                v-if="prop==='checkbox'"
+                :key="row[prop]"
+                type="checkbox"
+                :checked="row[prop]"
+                @click="(e)=>{
+                  e.preventDefault();
+                  $emit('clickOne',index, e.target.checked);
+                }"
+              />
               <Typography
-                v-if="(typeof row[prop]==='string') && prop!=='estado'"
+                v-else-if="(typeof row[prop]==='string') && prop!=='estado'"
                 :weight="row[ prop ].weight"
                 :size="row[ prop ].size"
                 :type="row[ prop ].type"
@@ -60,12 +100,20 @@ export default {
   props: {
     columns: { type: Object, required: true },
     rows: { type: Array, required: true }
+  },
+  methods: {
+    clickOne(position, e) {
+      console.log("este es un main click", position, e.target.checked);
+    }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
+.editinRow {
+  background-color: #b8eae3;
+}
 .table-responsive {
   width: 100%;
   overflow: auto;
@@ -84,7 +132,13 @@ export default {
 .table tr td {
   padding: 8px;
 }
+
+.textCenter {
+  text-align: center;
+}
+
 .table thead {
   background-color: #fafafa;
 }
 </style>
+
