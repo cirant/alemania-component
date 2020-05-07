@@ -105,6 +105,9 @@ export default {
       }
       this.$emit("filter", this.searchFilter);
     }
+  },
+  mounted() {
+    console.log("recibe", this.options);
   }
 };
 </script>
