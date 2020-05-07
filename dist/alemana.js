@@ -3185,8 +3185,8 @@ var Tableshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var Tableshadow = (Tableshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TableDiagnostico.vue?vue&type=template&id=46d148d8&shadow
-var TableDiagnosticovue_type_template_id_46d148d8_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table"},[_c('thead',[(_vm.columns)?_c('tr',_vm._l((_vm.columns),function(column,prop){return _c('th',{key:prop,class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TableDiagnostico.vue?vue&type=template&id=74df840f&shadow
+var TableDiagnosticovue_type_template_id_74df840f_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table"},[_c('thead',[(_vm.columns)?_c('tr',_vm._l((_vm.columns),function(column,prop){return _c('th',{key:prop,class:{
           textCenter: prop==='checkbox'
         }},[(prop === 'checkbox')?_c('input',{key:column,attrs:{"type":"checkbox"},domProps:{"checked":column},on:{"click":function (e){
             e.preventDefault();
@@ -3199,10 +3199,10 @@ var TableDiagnosticovue_type_template_id_46d148d8_shadow_render = function () {v
                 e.preventDefault();
                 _vm.clickOnePrivate(index, e.target.checked);
               }}}):((typeof row[prop]==='string') && prop!=='estado')?_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ]))]):(prop==='acciones')?_c('div',_vm._l((row[ prop ]),function(button){return _c('Buttom',{key:button.text,attrs:{"variant":button.variant,"icon":button.icon,"color":button.color},on:{"onClick":function($event){return button.onClick()}}},[_vm._v(_vm._s(button.text))])}),1):(prop==='estado')?_c('div',[_c('Status',{attrs:{"value":row[ prop ]}})],1):_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ].text))])],{"row":row,"prop":prop})],2)}),0)}),0):_vm._e()])])}
-var TableDiagnosticovue_type_template_id_46d148d8_shadow_staticRenderFns = []
+var TableDiagnosticovue_type_template_id_74df840f_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/TableDiagnostico.vue?vue&type=template&id=46d148d8&shadow
+// CONCATENATED MODULE: ./src/components/TableDiagnostico.vue?vue&type=template&id=74df840f&shadow
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Status.vue?vue&type=template&id=480cd4df&scoped=true&
 var Statusvue_type_template_id_480cd4df_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container",on:{"click":function($event){return _vm.$emit('onClick')}}},[_c('span',{staticClass:"circle",class:{
@@ -3380,7 +3380,7 @@ var Status_component = normalizeComponent(
   },
   methods: {
     clickOnePrivate(position, value) {
-      this.clickOne(position, value);
+      this.$emit("clickOne", position, value); // this.clickOne(position, value);
     },
 
     clickAllPrivate(value) {
@@ -3406,8 +3406,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var TableDiagnosticoshadow_component = normalizeComponent(
   components_TableDiagnosticovue_type_script_lang_js_shadow,
-  TableDiagnosticovue_type_template_id_46d148d8_shadow_render,
-  TableDiagnosticovue_type_template_id_46d148d8_shadow_staticRenderFns,
+  TableDiagnosticovue_type_template_id_74df840f_shadow_render,
+  TableDiagnosticovue_type_template_id_74df840f_shadow_staticRenderFns,
   false,
   TableDiagnosticoshadow_injectStyles,
   null,

@@ -105,7 +105,8 @@ export default {
   },
   methods: {
     clickOnePrivate(position, value) {
-      this.clickOne(position, value);
+      this.$emit("clickOne", position, value);
+      // this.clickOne(position, value);
     },
     clickAllPrivate(value) {
       this.allClick(value);

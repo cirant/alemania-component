@@ -9,7 +9,7 @@
       <Table :columns="tableData.headers" :rows="tableData.body"></Table>
       <TableDiagnostico
         :allClick="allClick"
-        :clickOne="rowClick"
+        @clickOne="rowClick"
         :columns="tableDiagnostico.headers"
         :rows="tableDiagnostico.body"
       ></TableDiagnostico>
