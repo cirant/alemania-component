@@ -1,7 +1,7 @@
 
   
 <template>
-  <transition name="modal" ref="slotModalContainer">
+  <transition name="modal">
     <div class="modal-mask">
       <div class="modal-wrapper" @click="closeModal()">
         <div class="modal-container" @click.stop>
@@ -12,7 +12,7 @@
             </slot>
           </div>
 
-          <div class="modal-body">
+          <div class="modal-body" ref="slotModalContainer">
             <slot name="body">default body</slot>
           </div>
 
