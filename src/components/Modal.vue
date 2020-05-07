@@ -3,10 +3,13 @@
 <template>
   <transition name="modal">
     <div class="modal-mask">
-      <div class="modal-wrapper">
-        <div class="modal-container">
+      <div class="modal-wrapper" @click="$emit('closeModal')">
+        <div class="modal-container" @click.stop>
           <div class="modal-header">
-            <slot name="header">default header</slot>
+            <slot name="header">
+              <Typography type="primary" weight="bold">Nuevo Diagnóstico</Typography>
+              <Buttom variant="text" color="secondary" @onClick="$emit('closeModal')">x</Buttom>
+            </slot>
           </div>
 
           <div class="modal-body">
@@ -15,8 +18,8 @@
 
           <div class="modal-footer">
             <slot name="footer">
-              default footer
-              <button class="modal-default-button" @click="$emit('close')">OK</button>
+              <Buttom variant="outlined" @onClick="$emit('closeModal')">Cancelar</Buttom>
+              <Buttom @onClick="$emit('closeModal')">Agregar</Buttom>
             </slot>
           </div>
         </div>
@@ -26,8 +29,15 @@
 </template>
 
 <script>
+import Buttom from "./Button.vue";
+import Typography from "./Typography";
+
 export default {
-  name: "Modal"
+  name: "Modal",
+  components: {
+    Buttom,
+    Typography
+  }
 };
 </script>
 
@@ -50,26 +60,34 @@ export default {
 }
 
 .modal-container {
-  width: 300px;
+  width: 400px;
   margin: 0px auto;
-  padding: 20px 0px;
   background-color: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
 }
 
 .modal-footer {
   border-top: 1px solid rgba(0, 0, 0, 0.09);
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .modal-body {
   margin: 20px 0;
+  padding: 26px 18px;
 }
 
 .modal-default-button {

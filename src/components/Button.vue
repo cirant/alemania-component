@@ -4,9 +4,11 @@
     :type="type"
     v-bind:class="{
       btnSolid: variant === 'contained',
+      btnOutlined: variant === 'outlined',
       btnText: variant === 'text',
       color: color === 'primary',
-      error: color === 'error'
+      error: color === 'error',
+      secondary: color === 'secondary',
     }"
     @click="$emit('onClick')"
   >
@@ -108,6 +110,11 @@ export default {
   color: white;
 }
 
+.btnOutlined {
+  border: 1px solid #d9d9d9;
+  color: #000000a6;
+}
+
 .btnSolid.error {
   background-color: #e82037;
 }
@@ -119,5 +126,9 @@ export default {
 
 .btnText.error {
   color: #e82037;
+}
+
+.btnText.secondary {
+  color: #00000040;
 }
 </style>

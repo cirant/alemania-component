@@ -119,15 +119,12 @@ export default {
   display: block;
   font-size: 0.8em;
   padding: 6px;
-  min-width: 250px;
-  max-width: 250px;
+  width: -webkit-fill-available;
+  width: 96%;
 }
 .dropdown-content {
   position: absolute;
   background-color: #fff;
-  min-width: 248px;
-  max-width: 248px;
-  max-height: 248px;
   border: 1px solid #e7ecf5;
   box-shadow: 0px -8px 34px 0px rgba(0, 0, 0, 0.05);
   overflow: auto;

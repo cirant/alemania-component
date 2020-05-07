@@ -42,25 +42,43 @@
       </div>
     </Card>
 
-    <Card>
-      <Modal v-if="showModal">
-        <div slot="body">
-          <Select :options="options" />
+    <Modal v-if="showModal" @closeModal="closeModal()">
+      <div slot="body">
+        <Select :options="options" />
 
-          <NotificationTag type="exito" />
-          <NotificationTag type="informacion" />
-          <NotificationTag type="alerta" />
-        </div>
-      </Modal>
-      <Buttom @onClick="showModal = true">Default</Buttom>
-    </Card>
+        <NotificationTag type="exito">
+          <div slot="message">
+            <Typography variant="h1" weight="bold">Diagnóstico agregado</Typography>
+            <br />
+            <Typography
+              variant="p"
+              size="12"
+            >El diagnóstico fue agregado exitosamente, indicar estado de diagnóstico en el listado.</Typography>
+          </div>
+        </NotificationTag>
+
+        <NotificationTag type="informacion">
+          <Typography variant="p" slot="message" size="12">Patología GES.</Typography>
+          <Typography variant="p" slot="action" size="12">Revisar</Typography>
+        </NotificationTag>
+
+        <NotificationTag type="alerta">
+          <Typography
+            variant="p"
+            slot="message"
+            size="12"
+          >Este diagnóstico está clasificado como ENO, notificar.</Typography>
+          <Typography variant="p" slot="action" size="12">x</Typography>
+        </NotificationTag>
+        <TextArea />
+      </div>
+    </Modal>
+    <Buttom @onClick="showModal = true">Default</Buttom>
   </div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
 import Buttom from "./components/Button.vue";
-
 import Typography from "./components/Typography";
 import Select from "./components/Select";
 import Status from "./components/Status";
@@ -68,7 +86,7 @@ import Table from "./components/Table";
 import Modal from "./components/Modal";
 import NotificationTag from "./components/NotificationTag";
 import TableDiagnostico from "./components/TableDiagnostico";
-
+import TextArea from "./components/TextArea";
 export default {
   name: "App",
   components: {
@@ -79,7 +97,8 @@ export default {
     Table,
     Modal,
     NotificationTag,
-    TableDiagnostico
+    TableDiagnostico,
+    TextArea
   },
   data: function() {
     return {
@@ -253,6 +272,9 @@ export default {
   methods: {
     mainClick() {
       console.log("este es un main click");
+    },
+    closeModal() {
+      this.showModal = false;
     }
   }
 };
