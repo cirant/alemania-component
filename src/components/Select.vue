@@ -35,7 +35,16 @@ export default {
     options: {
       type: Array,
       required: true,
-      default: () => []
+      default: () => [
+        {
+          id: 1,
+          name: "Observación de Trombosis venosa profunda pierna derecha"
+        },
+        {
+          id: 2,
+          name: "Observación de Trombosis venosa profunda pierna izquierda"
+        }
+      ]
     },
     placeholder: {
       type: String,
