@@ -192,7 +192,7 @@ export default {
               text:
                 "Afecciones respiratorias debidas a inhalación de gases, humos…"
             },
-            estado: "",
+            estado: "alta",
             fecha: {
               size: "",
               text: "2014-12-24  24:15:00"
@@ -226,7 +226,7 @@ export default {
             ]
           },
           {
-            checkbox: false,
+            checkbox: true,
             diagnostico: {
               variant: "p",
               type: "primary",
@@ -282,19 +282,14 @@ export default {
     },
     rowClick(position, status) {
       console.log("este es un main click", position, status);
-      console.log(
-        "this.$data.tableDiagnostico.body[position]",
-        this.tableDiagnostico.body[position].checkbox
-      );
-
-      this.tableDiagnostico.body[position].checkbox = status;
+      // this.tableDiagnostico.body[position].checkbox = status;
     },
     allClick(e) {
       console.log("click en todos", e);
       this.tableDiagnostico.headers.checkbox = e;
-      this.tableDiagnostico.body.forEach(element => {
-        element.checkbox = e;
-      });
+      // this.tableDiagnostico.body.forEach(element => {
+      //   element.checkbox = e;
+      // });
     },
     closeModal() {
       this.showModal = false;

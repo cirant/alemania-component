@@ -5,10 +5,12 @@
       v-bind:class="{
       confirm: value === 'confirmado',
       negative: value === 'sospecha',
+      alta: value === 'alta',
     }"
     ></span>
 
-    <span class="text" v-if="value === 'confirmado'">Confirmado</span>
+    <span class="text" v-if="value === 'alta'">Alta</span>
+    <span class="text" v-else-if="value === 'confirmado'">Confirmado</span>
     <span class="text" v-else-if="value === 'sospecha'">Sospecha</span>
     <span class="text" v-else>Descartado</span>
   </div>
@@ -39,6 +41,10 @@ export default {
   padding-left: 8px;
   font-size: 14px;
   font-family: Helvetica, Arial, sans-serif;
+}
+
+.alta {
+  background-color: #34b576;
 }
 
 .confirm {

@@ -16,7 +16,6 @@
               :checked="column"
               type="checkbox"
               @click="(e)=>{
-              e.preventDefault();
               clickAllPrivate(e.target.checked);
               }"
             />
@@ -24,12 +23,12 @@
           </th>
         </tr>
       </thead>
-      <tbody v-if="rows">
+      <tbody v-if="rowStates">
         <tr
-          v-for="( row, index ) in rows"
+          v-for="( row, index ) in rowStates"
           :key="index"
           v-bind:class="{
-          editinRow: row.checkbox
+          editinRow: row.checked
         }"
         >
           <td
@@ -42,11 +41,10 @@
             <slot :row="row" :prop="prop">
               <input
                 v-if="prop==='checkbox'"
-                :key="row[prop]"
+                :key="row.checked"
                 type="checkbox"
-                :checked="row[prop]"
+                :checked="row.checked"
                 @click="(e)=>{
-                  e.preventDefault();
                   clickOnePrivate(index, e.target.checked);
                 }"
               />
@@ -68,7 +66,13 @@
                 >{{button.text}}</Buttom>
               </div>
               <div v-else-if="prop==='estado'">
-                <Status :value="row[ prop ]" />
+                <Status v-if="!row.checked" :value="row[ prop ]" />
+                <select v-model="row[prop]" v-else>
+                  <option value="alta">Alta</option>
+                  <option value="confirmado">Confirmado</option>
+                  <option value="sospecha">Sospecha</option>
+                  <option value="descartado">Descartado</option>
+                </select>
               </div>
               <Typography
                 v-else
@@ -97,19 +101,41 @@ export default {
     Buttom,
     Status
   },
+  data() {
+    return {
+      rowStates: []
+    };
+  },
   props: {
     columns: { type: Object, required: true },
     rows: { type: Array, required: true },
     allClick: { type: Function, default: () => null },
     clickOne: { type: Function, default: () => null }
   },
+  mounted: function() {
+    this.rowStates = this.rows.map(row => {
+      return {
+        ...row,
+        checked: row.checkbox
+      };
+    });
+  },
   methods: {
     clickOnePrivate(position, value) {
-      this.$emit("clickOne", position, value);
-      // this.clickOne(position, value);
+      this.rowStates = this.rowStates.map((row, index) => {
+        return {
+          ...row,
+          checked: index === position ? value : row.checked
+        };
+      });
     },
     clickAllPrivate(value) {
-      this.allClick(value);
+      this.rowStates = this.rowStates.map(row => {
+        return {
+          ...row,
+          checked: value
+        };
+      });
     }
   }
 };
