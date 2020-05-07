@@ -103,7 +103,131 @@ export default {
   },
   data() {
     return {
-      rowStates: []
+      rowStates: [
+        {
+          checkbox: false,
+          diagnostico: {
+            variant: "p",
+            type: "primary",
+            text:
+              "Afecciones respiratorias debidas a inhalación de gases, humos…"
+          },
+          estado: "confirmado",
+          fecha: {
+            size: "",
+            text: "2014-12-24  24:15:00"
+          },
+          eno: {
+            weight: "bold",
+            text: "ENO"
+          },
+          ges: {
+            weight: "bold",
+            text: "GES"
+          },
+          acciones: [
+            {
+              text: "Editar",
+              variant: "text",
+              icon: "edit",
+              onClick: function() {
+                console.log("hola mundo Editar");
+              }
+            },
+            {
+              text: "Eliminar",
+              variant: "text",
+              color: "error",
+              icon: "trash",
+              onClick: function() {
+                console.log("hola mundo eliminar");
+              }
+            }
+          ]
+        },
+        {
+          checkbox: false,
+          diagnostico: {
+            variant: "p",
+            type: "primary",
+            text:
+              "Afecciones respiratorias debidas a inhalación de gases, humos…"
+          },
+          estado: "alta",
+          fecha: {
+            size: "",
+            text: "2014-12-24  24:15:00"
+          },
+          eno: {
+            weight: "bold",
+            text: "ENO"
+          },
+          ges: {
+            weight: "bold",
+            text: "GES"
+          },
+          acciones: [
+            {
+              text: "Editar",
+              variant: "text",
+              icon: "edit",
+              onClick: function() {
+                console.log("hola mundo Editar");
+              }
+            },
+            {
+              text: "Eliminar",
+              variant: "text",
+              color: "error",
+              icon: "trash",
+              onClick: function() {
+                console.log("hola mundo eliminar");
+              }
+            }
+          ]
+        },
+        {
+          checkbox: true,
+          diagnostico: {
+            variant: "p",
+            type: "primary",
+            text:
+              "Afecciones respiratorias debidas a inhalación de gases, humos…"
+          },
+          estado: "sospecha",
+          fecha: {
+            size: "",
+            text: "2014-12-24  24:15:00"
+          },
+          eno: {
+            weight: "bold",
+            text: "ENO"
+          },
+          ges: {
+            weight: "bold",
+            text: "GES"
+          },
+          acciones: [
+            {
+              text: "Editar",
+              variant: "text",
+              icon: "edit",
+              onClick: function() {
+                console.log("hola mundo Editar");
+              }
+            },
+            {
+              text: "Eliminar",
+              variant: "text",
+              color: "error",
+              icon: "trash",
+              onClick: function() {
+                console.log("hola mundo eliminar");
+              }
+            }
+          ]
+        }
+      ]
     };
   },
   props: {
@@ -111,19 +235,6 @@ export default {
     rows: { type: Array, required: true },
     allClick: { type: Function, default: () => null },
     clickOne: { type: Function, default: () => null }
-  },
-  mounted: function() {
-    console.log("entrando en el mounted");
-
-    if (this.rows) {
-      console.log("entrando en el mounted [[rows]]", this.rows);
-      this.rowStates = this.rows.map(row => {
-        return {
-          ...row,
-          checked: row.checkbox
-        };
-      });
-    }
   },
   methods: {
     clickOnePrivate(position, value) {

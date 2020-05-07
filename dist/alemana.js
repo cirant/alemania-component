@@ -3288,8 +3288,8 @@ var Tableshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var Tableshadow = (Tableshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TableDiagnostico.vue?vue&type=template&id=40b536db&shadow
-var TableDiagnosticovue_type_template_id_40b536db_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table"},[_c('thead',[(_vm.columns)?_c('tr',_vm._l((_vm.columns),function(column,prop){return _c('th',{key:prop,class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TableDiagnostico.vue?vue&type=template&id=32501df4&shadow
+var TableDiagnosticovue_type_template_id_32501df4_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table"},[_c('thead',[(_vm.columns)?_c('tr',_vm._l((_vm.columns),function(column,prop){return _c('th',{key:prop,class:{
           textCenter: prop==='checkbox'
         }},[(prop === 'checkbox')?_c('input',{key:column,attrs:{"type":"checkbox"},domProps:{"checked":column},on:{"click":function (e){
             _vm.clickAllPrivate(e.target.checked);
@@ -3300,10 +3300,10 @@ var TableDiagnosticovue_type_template_id_40b536db_shadow_render = function () {v
         }},[_vm._t("default",[(prop==='checkbox')?_c('input',{key:row.checked,attrs:{"type":"checkbox"},domProps:{"checked":row.checked},on:{"click":function (e){
                 _vm.clickOnePrivate(index, e.target.checked);
               }}}):((typeof row[prop]==='string') && prop!=='estado')?_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ]))]):(prop==='acciones')?_c('div',_vm._l((row[ prop ]),function(button){return _c('Buttom',{key:button.text,attrs:{"variant":button.variant,"icon":button.icon,"color":button.color},on:{"onClick":function($event){return button.onClick()}}},[_vm._v(_vm._s(button.text))])}),1):(prop==='estado')?_c('div',[(!row.checked)?_c('Status',{attrs:{"value":row[ prop ]}}):_c('select',{directives:[{name:"model",rawName:"v-model",value:(row[prop]),expression:"row[prop]"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(row, prop, $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},[_c('option',{attrs:{"value":"alta"}},[_vm._v("Alta")]),_c('option',{attrs:{"value":"confirmado"}},[_vm._v("Confirmado")]),_c('option',{attrs:{"value":"sospecha"}},[_vm._v("Sospecha")]),_c('option',{attrs:{"value":"descartado"}},[_vm._v("Descartado")])])],1):_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ].text))])],{"row":row,"prop":prop})],2)}),0)}),0):_vm._e()])])}
-var TableDiagnosticovue_type_template_id_40b536db_shadow_staticRenderFns = []
+var TableDiagnosticovue_type_template_id_32501df4_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/TableDiagnostico.vue?vue&type=template&id=40b536db&shadow
+// CONCATENATED MODULE: ./src/components/TableDiagnostico.vue?vue&type=template&id=32501df4&shadow
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__("d81d");
@@ -3552,7 +3552,115 @@ var Status_component = normalizeComponent(
 
   data() {
     return {
-      rowStates: []
+      rowStates: [{
+        checkbox: false,
+        diagnostico: {
+          variant: "p",
+          type: "primary",
+          text: "Afecciones respiratorias debidas a inhalación de gases, humos…"
+        },
+        estado: "confirmado",
+        fecha: {
+          size: "",
+          text: "2014-12-24  24:15:00"
+        },
+        eno: {
+          weight: "bold",
+          text: "ENO"
+        },
+        ges: {
+          weight: "bold",
+          text: "GES"
+        },
+        acciones: [{
+          text: "Editar",
+          variant: "text",
+          icon: "edit",
+          onClick: function onClick() {
+            console.log("hola mundo Editar");
+          }
+        }, {
+          text: "Eliminar",
+          variant: "text",
+          color: "error",
+          icon: "trash",
+          onClick: function onClick() {
+            console.log("hola mundo eliminar");
+          }
+        }]
+      }, {
+        checkbox: false,
+        diagnostico: {
+          variant: "p",
+          type: "primary",
+          text: "Afecciones respiratorias debidas a inhalación de gases, humos…"
+        },
+        estado: "alta",
+        fecha: {
+          size: "",
+          text: "2014-12-24  24:15:00"
+        },
+        eno: {
+          weight: "bold",
+          text: "ENO"
+        },
+        ges: {
+          weight: "bold",
+          text: "GES"
+        },
+        acciones: [{
+          text: "Editar",
+          variant: "text",
+          icon: "edit",
+          onClick: function onClick() {
+            console.log("hola mundo Editar");
+          }
+        }, {
+          text: "Eliminar",
+          variant: "text",
+          color: "error",
+          icon: "trash",
+          onClick: function onClick() {
+            console.log("hola mundo eliminar");
+          }
+        }]
+      }, {
+        checkbox: true,
+        diagnostico: {
+          variant: "p",
+          type: "primary",
+          text: "Afecciones respiratorias debidas a inhalación de gases, humos…"
+        },
+        estado: "sospecha",
+        fecha: {
+          size: "",
+          text: "2014-12-24  24:15:00"
+        },
+        eno: {
+          weight: "bold",
+          text: "ENO"
+        },
+        ges: {
+          weight: "bold",
+          text: "GES"
+        },
+        acciones: [{
+          text: "Editar",
+          variant: "text",
+          icon: "edit",
+          onClick: function onClick() {
+            console.log("hola mundo Editar");
+          }
+        }, {
+          text: "Eliminar",
+          variant: "text",
+          color: "error",
+          icon: "trash",
+          onClick: function onClick() {
+            console.log("hola mundo eliminar");
+          }
+        }]
+      }]
     };
   },
 
@@ -3572,18 +3680,6 @@ var Status_component = normalizeComponent(
     clickOne: {
       type: Function,
       default: () => null
-    }
-  },
-  mounted: function mounted() {
-    console.log("entrando en el mounted");
-
-    if (this.rows) {
-      console.log("entrando en el mounted [[rows]]", this.rows);
-      this.rowStates = this.rows.map(row => {
-        return _objectSpread2(_objectSpread2({}, row), {}, {
-          checked: row.checkbox
-        });
-      });
     }
   },
   methods: {
@@ -3622,8 +3718,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var TableDiagnosticoshadow_component = normalizeComponent(
   components_TableDiagnosticovue_type_script_lang_js_shadow,
-  TableDiagnosticovue_type_template_id_40b536db_shadow_render,
-  TableDiagnosticovue_type_template_id_40b536db_shadow_staticRenderFns,
+  TableDiagnosticovue_type_template_id_32501df4_shadow_render,
+  TableDiagnosticovue_type_template_id_32501df4_shadow_staticRenderFns,
   false,
   TableDiagnosticoshadow_injectStyles,
   null,
