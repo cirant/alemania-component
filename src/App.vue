@@ -49,7 +49,7 @@
 
     <Modal v-if="showModal" @closeModal="closeModal()">
       <div slot="body">
-        <Select :options="options" />
+        <Select />
 
         <NotificationTag type="exito">
           <div slot="message">

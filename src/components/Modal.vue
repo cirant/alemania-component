@@ -1,7 +1,7 @@
 
   
 <template>
-  <transition name="modal" ref="slotModalContainer">
+  <transition name="modal">
     <div class="modal-mask">
       <div class="modal-wrapper" @click="closeModal()">
         <div class="modal-container" @click.stop>
@@ -38,19 +38,9 @@ export default {
     Buttom,
     Typography
   },
-  mounted() {
-    console.log("==============================");
-    if (process.env.NODE_ENV !== "development") {
-      this.$nextTick().then(this.fixSlot.bind(this));
-    }
-  },
   methods: {
     closeModal() {
       this.$emit("closeModal");
-    },
-    fixSlot() {
-      this.$refs.slotModalContainer.innerHTML = "";
-      this.$refs.slotModalContainer.append(document.createElement("slot"));
     }
   }
 };
