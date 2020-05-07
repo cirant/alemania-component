@@ -65,7 +65,8 @@ export default {
     };
   },
   created() {
-    this.$emit("selected", this.selected);
+    // this.$emit("selected", this.selected);
+    // console.log(this.selected);
   },
   computed: {
     filteredOptions() {
@@ -87,7 +88,6 @@ export default {
       this.$emit("selected", this.selected);
     },
     showOptions() {
-      console.log("opciones disponibles", this.options);
       this.searchFilter = "";
       this.optionsShown = true;
     },

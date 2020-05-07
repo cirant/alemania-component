@@ -13,13 +13,51 @@
           </div>
 
           <div class="modal-body">
-            <slot name="body">default body</slot>
+            <div class="selection-container" v-if="userIsSelecting">
+              <Select @selected="updateSelector" :options="options" />
+              <div class="notifications" v-if="showNotifications">
+                <NotificationTag type="informacion">
+                  <Typography variant="p" slot="message" size="12">Patología GES.</Typography>
+                  <Typography variant="p" slot="action" size="12">Revisar</Typography>
+                </NotificationTag>
+
+                <NotificationTag type="alerta">
+                  <Typography
+                    variant="p"
+                    slot="message"
+                    size="12"
+                  >Este diagnóstico está clasificado como ENO, notificar.</Typography>
+                  <Typography variant="p" slot="action" size="12">x</Typography>
+                </NotificationTag>
+              </div>
+              <div>
+                <Typography>Problema de salud:</Typography>
+                <TextArea @textUpdated="updateTextField" />
+              </div>
+            </div>
+            <div class="result-container" v-else>
+              <NotificationTag type="exito">
+                <div slot="message">
+                  <Typography variant="h1" weight="bold">Diagnóstico agregado</Typography>
+                  <br />
+                  <Typography
+                    variant="p"
+                    size="12"
+                  >El diagnóstico fue agregado exitosamente, indicar estado de diagnóstico en el listado.</Typography>
+                </div>
+              </NotificationTag>
+            </div>
           </div>
 
           <div class="modal-footer">
             <slot name="footer">
-              <Buttom variant="outlined" @onClick="closeModal()">Cancelar</Buttom>
-              <Buttom @onClick="closeModal()">Agregar</Buttom>
+              <div v-if="userIsSelecting">
+                <Buttom variant="outlined" @onClick="closeModal()">Cancelar</Buttom>
+                <Buttom @onClick="addHealthCondition()">Agregar</Buttom>
+              </div>
+              <div v-else>
+                <Buttom @onClick="endProcess()">Ir a la ficha</Buttom>
+              </div>
             </slot>
           </div>
         </div>
@@ -31,17 +69,59 @@
 <script>
 import Buttom from "./Button.vue";
 import Typography from "./Typography";
+import Select from "./Select";
+import TextArea from "./TextArea";
+import NotificationTag from "./NotificationTag";
 
 export default {
   name: "Modal",
   components: {
     Buttom,
-    Typography
+    Typography,
+    Select,
+    TextArea,
+    NotificationTag
   },
   methods: {
     closeModal() {
       this.$emit("closeModal");
+    },
+    updateSelector(e) {
+      this.selectedOption = e;
+      this.showNotifications = false;
+      if (e.type === "GES" || e.type === "ENO") {
+        setTimeout(() => (this.showNotifications = true), 500);
+      }
+    },
+    updateTextField(e) {
+      this.healthCondition = e;
+    },
+    addHealthCondition() {
+      const dataToSend = {
+        medicalDiagnostic: this.selectedOption,
+        description: this.healthCondition
+      };
+      this.$emit("endProcess", dataToSend);
+
+      setTimeout(() => (this.userIsSelecting = false), 500);
+    },
+    endProcess() {
+      this.closeModal();
     }
+  },
+  data: function() {
+    return {
+      options: [
+        { id: 1, name: "Trombosis profunda", type: "GES" },
+        { id: 2, name: "Trombosis mega profunda", type: "ENO" },
+        { id: 3, name: "Hiper mega Trombosis", type: "ENO" },
+        { id: 3, name: "Otra info", type: "GES" }
+      ],
+      showNotifications: false,
+      userIsSelecting: true,
+      selectedOption: "",
+      healthCondition: ""
+    };
   }
 };
 </script>

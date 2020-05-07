@@ -21,7 +21,6 @@ export default {
   methods: {
     handlerChange() {
       this.$emit("textUpdated", this.text);
-      console.log(this.text);
     }
   }
 };
