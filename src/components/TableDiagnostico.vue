@@ -113,12 +113,17 @@ export default {
     clickOne: { type: Function, default: () => null }
   },
   mounted: function() {
-    this.rowStates = this.rows.map(row => {
-      return {
-        ...row,
-        checked: row.checkbox
-      };
-    });
+    console.log("entrando en el mounted");
+
+    if (this.rows) {
+      console.log("entrando en el mounted [[rows]]", this.rows);
+      this.rowStates = this.rows.map(row => {
+        return {
+          ...row,
+          checked: row.checkbox
+        };
+      });
+    }
   },
   methods: {
     clickOnePrivate(position, value) {

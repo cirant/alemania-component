@@ -7,12 +7,7 @@
         <Typography variant="span" size="12">Última actualización: 10 / 07 / 2017, 20:30 hrs.</Typography>
       </div>
       <Table :columns="tableData.headers" :rows="tableData.body"></Table>
-      <TableDiagnostico
-        :allClick="allClick"
-        @clickOne="rowClick"
-        :columns="tableDiagnostico.headers"
-        :rows="tableDiagnostico.body"
-      ></TableDiagnostico>
+      <TableDiagnostico :columns="tableDiagnostico.headers" :rows="tableDiagnostico.body"></TableDiagnostico>
       <table class="table"></table>
       <Buttom @onClick="mainClick">Nuevo Diagnóstico</Buttom>
     </Card>
