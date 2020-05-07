@@ -38,10 +38,19 @@ export default {
     Buttom,
     Typography
   },
+  mounted() {
+    console.log("==============================");
+    if (process.env.NODE_ENV !== "development") {
+      this.$nextTick().then(this.fixSlot.bind(this));
+    }
+  },
   methods: {
     closeModal() {
-      console.log("emite evento cierre");
       this.$emit("closeModal");
+    },
+    fixSlot() {
+      this.$refs.slotContainer.innerHTML = "";
+      this.$refs.slotContainer.append(document.createElement("slot"));
     }
   }
 };
