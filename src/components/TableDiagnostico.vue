@@ -17,7 +17,7 @@
               type="checkbox"
               @click="(e)=>{
               e.preventDefault();
-              $emit('allClick', e.target.checked);
+              clickAllPrivate(e.target.checked);
               }"
             />
             {{ prop !== 'checkbox' ? column : '' }}
@@ -47,7 +47,7 @@
                 :checked="row[prop]"
                 @click="(e)=>{
                   e.preventDefault();
-                  $emit('clickOne',index, e.target.checked);
+                  clickOnePrivate(index, e.target.checked);
                 }"
               />
               <Typography
@@ -99,11 +99,16 @@ export default {
   },
   props: {
     columns: { type: Object, required: true },
-    rows: { type: Array, required: true }
+    rows: { type: Array, required: true },
+    allClick: { type: Function, default: () => null },
+    clickOne: { type: Function, default: () => null }
   },
   methods: {
-    clickOne(position, e) {
-      console.log("este es un main click", position, e.target.checked);
+    clickOnePrivate(position, value) {
+      this.clickOne(position, value);
+    },
+    clickAllPrivate(value) {
+      this.allClick(value);
     }
   }
 };
