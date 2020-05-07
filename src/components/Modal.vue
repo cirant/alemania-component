@@ -3,12 +3,12 @@
 <template>
   <transition name="modal">
     <div class="modal-mask">
-      <div class="modal-wrapper" @click="$emit('closeModal')">
+      <div class="modal-wrapper" @click="closeModal()">
         <div class="modal-container" @click.stop>
           <div class="modal-header">
             <slot name="header">
               <Typography type="primary" weight="bold">Nuevo Diagnóstico</Typography>
-              <Buttom variant="text" color="secondary" @onClick="$emit('closeModal')">x</Buttom>
+              <Buttom variant="text" color="secondary" @onClick="closeModal()">x</Buttom>
             </slot>
           </div>
 
@@ -18,8 +18,8 @@
 
           <div class="modal-footer">
             <slot name="footer">
-              <Buttom variant="outlined" @onClick="$emit('closeModal')">Cancelar</Buttom>
-              <Buttom @onClick="$emit('closeModal')">Agregar</Buttom>
+              <Buttom variant="outlined" @onClick="closeModal()">Cancelar</Buttom>
+              <Buttom @onClick="closeModal()">Agregar</Buttom>
             </slot>
           </div>
         </div>
@@ -37,6 +37,12 @@ export default {
   components: {
     Buttom,
     Typography
+  },
+  methods: {
+    closeModal() {
+      console.log("emite evento cierre");
+      this.$emit("closeModal");
+    }
   }
 };
 </script>
