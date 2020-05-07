@@ -1,194 +1,59 @@
 <template>
   <div id="app">
-    <div>
-      <Typography variant="h4" weight="bold" type="primary">DIAGNÓSTICO</Typography>
-      <Typography variant="span" size="12">Última actualización: 10 / 07 / 2017, 20:30 hrs.</Typography>
-    </div>
-    <Table>
-      <thead>
-        <tr>
-          <th>
-            <input type="checkbox" />
-          </th>
-          <th>nombre del diagnóstico</th>
-          <th>estado</th>
-          <th>fecha</th>
-          <td colspan="2"></td>
-          <th>acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td align="center">
-            <input type="checkbox" />
-          </td>
-          <td>
-            <Typography
-              variant="p"
-              type="primary"
-            >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
-          </td>
-          <td>
-            <Status value="confirmado" />
-          </td>
-          <td>
-            <Typography>2014-12-24 24:15:00</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">ENO</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">GES</Typography>
-          </td>
-          <td>
-            <div class="actions-container">
-              <Buttom variant="text" icon="edit">Editar</Buttom>
-              <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </Table>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>
-            <input type="checkbox" />
-          </th>
-          <th>nombre del diagnóstico</th>
-          <th>estado</th>
-          <th>fecha</th>
-          <th>acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <input type="checkbox" />
-          </td>
-          <td>
-            <Typography
-              variant="p"
-              type="primary"
-            >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
-          </td>
-          <td>
-            <Status value="confirmado" />
-          </td>
-          <td>
-            <Typography>2014-12-24 24:15:00</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">ENO</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">GES</Typography>
-          </td>
-          <td>
-            <div class="actions-container">
-              <Buttom variant="text" icon="edit">Editar</Buttom>
-              <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="checkbox" />
-          </td>
-          <td>
-            <Typography
-              variant="p"
-              type="primary"
-            >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
-          </td>
-          <td>
-            <Status value="sospecha" />
-          </td>
-          <td>
-            <Typography>2014-12-24 24:15:00</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">ENO</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">GES</Typography>
-          </td>
-          <td>
-            <div class="actions-container">
-              <Buttom variant="text" icon="edit">Editar</Buttom>
-              <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <input type="checkbox" />
-          </td>
-          <td>
-            <Typography
-              variant="p"
-              type="primary"
-            >Afecciones respiratorias debidas a inhalación de gases, humos…</Typography>
-          </td>
-          <td>
-            <Status />
-          </td>
-          <td>
-            <Typography>2014-12-24 24:15:00</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">ENO</Typography>
-          </td>
-          <td>
-            <Typography weight="bold">GES</Typography>
-          </td>
-          <td>
-            <div class="actions-container">
-              <Buttom variant="text" icon="edit">Editar</Buttom>
-              <Buttom variant="text" color="error" icon="trash">Eliminar</Buttom>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <Buttom @onClick="mainClick()">Nuevo Diagnóstico</Buttom>
-
-    <br />
-
-    <div class="flex">
-      Typography
-      <Typography variant="h1">text h1 - h6</Typography>
-      <Typography variant="h1" size="16">text h6</Typography>
-      <Typography variant="p">text p</Typography>
-      <Typography variant="p" weight="bold">text bold</Typography>
-      <Typography variant="p" weight="lighter">text lighter</Typography>
-      <Typography variant="p">text normal</Typography>
-      <Typography type="primary">primary color</Typography>
-      <Typography type="error">error color</Typography>
-    </div>
-    <div class="flex">
-      Button
-      <Buttom>Default</Buttom>
-      <Buttom color="error">Error</Buttom>
-      <Buttom variant="text">Default text button</Buttom>
-      <Buttom variant="text" color="error">Error text button</Buttom>
-      <Buttom variant="text" icon="edit">icon edit</Buttom>
-      <Buttom variant="text" color="error" icon="trash">icon trash</Buttom>
-    </div>
-
-    <br />
-
-    <Modal v-if="showModal">
-      <div slot="body">
-        <Select :options="options" />
-
-        <NotificationTag type="exito" />
-        <NotificationTag type="informacion" />
-        <NotificationTag type="alerta" />
+    <div :key="index" v-for="(data, index) in tableData.body">{{data.content}}</div>
+    <Card align="left">
+      <div>
+        <Typography variant="h4" weight="bold" type="primary">DIAGNÓSTICO</Typography>
+        <Typography variant="span" size="12">Última actualización: 10 / 07 / 2017, 20:30 hrs.</Typography>
       </div>
-    </Modal>
-    <Buttom @onClick="showModal = true">Default</Buttom>
+      <Table :columns="tableData.headers" :rows="tableData.body"></Table>
+      <TableDiagnostico :columns="tableDiagnostico.headers" :rows="tableDiagnostico.body"></TableDiagnostico>
+      <table class="table"></table>
+      <Buttom @onClick="mainClick">Nuevo Diagnóstico</Buttom>
+    </Card>
+    <br />
+    <Card align="left">
+      <div class="flex">
+        <Typography variant="h1" weight="bold" size="16">Typography</Typography>
+        <br />
+        <Typography variant="h1">text h1 - h6</Typography>
+        <Typography variant="h1" size="16">text h6</Typography>
+        <Typography variant="p">text p</Typography>
+        <Typography variant="p" weight="bold">text bold</Typography>
+        <Typography variant="p" weight="lighter">text lighter</Typography>
+        <Typography variant="p">text normal</Typography>
+        <Typography type="primary">primary color</Typography>
+        <Typography type="error">error color</Typography>
+      </div>
+      <div class="flex">
+        <Typography variant="h1" weight="bold" size="16">Button</Typography>
+        <Buttom>Default</Buttom>
+        <Buttom color="error">Error</Buttom>
+        <Buttom variant="text">Default text button</Buttom>
+        <Buttom variant="text" color="error">Error text button</Buttom>
+        <Buttom variant="text" icon="edit">icon edit</Buttom>
+        <Buttom variant="text" color="error" icon="trash">icon trash</Buttom>
+      </div>
+      <div class="flex">
+        <Typography variant="h1" weight="bold" size="16">Status</Typography>
+        <Status value="sospecha" />
+        <Status value="confirmado" />
+        <Status value />
+      </div>
+    </Card>
+
+    <Card>
+      <Modal v-if="showModal">
+        <div slot="body">
+          <Select :options="options" />
+
+          <NotificationTag type="exito" />
+          <NotificationTag type="informacion" />
+          <NotificationTag type="alerta" />
+        </div>
+      </Modal>
+      <Buttom @onClick="showModal = true">Default</Buttom>
+    </Card>
   </div>
 </template>
 
@@ -202,6 +67,7 @@ import Status from "./components/Status";
 import Table from "./components/Table";
 import Modal from "./components/Modal";
 import NotificationTag from "./components/NotificationTag";
+import TableDiagnostico from "./components/TableDiagnostico";
 
 export default {
   name: "App",
@@ -212,15 +78,170 @@ export default {
     Status,
     Table,
     Modal,
-    NotificationTag
+    NotificationTag,
+    TableDiagnostico
   },
-  methods: {
-    mainClick() {
-      console.log("este es un main click");
-    }
-  },
-  data() {
+  data: function() {
     return {
+      tableData: {
+        headers: {
+          checkboxArea: "",
+          diagnostico: "Nombre del diagnóstico",
+          fecha: "Fecha",
+          estado: "Estado",
+          eno: "",
+          ges: "",
+          acciones: ""
+        },
+        body: [
+          {
+            checkboxArea: "active",
+            diagnostico:
+              "Afecciones respiratorias debidas a inhalación de gases, humos…",
+            estado: "confirmado",
+            fecha: "Fecha",
+            eno: "ENO",
+            ges: "GES",
+            acciones: "xxxxxx"
+          }
+        ]
+      },
+      tableDiagnostico: {
+        headers: {
+          // checkboxArea: "",
+          diagnostico: "Nombre del diagnóstico",
+          estado: "Estado",
+          fecha: "Fecha",
+          eno: "",
+          ges: "",
+          acciones: "acciones"
+        },
+        body: [
+          {
+            // checkboxArea: "active",
+            diagnostico: {
+              variant: "p",
+              type: "primary",
+              text:
+                "Afecciones respiratorias debidas a inhalación de gases, humos…"
+            },
+            estado: "confirmado",
+            fecha: {
+              size: "",
+              text: "2014-12-24  24:15:00"
+            },
+            eno: {
+              weight: "bold",
+              text: "ENO"
+            },
+            ges: {
+              weight: "bold",
+              text: "GES"
+            },
+            acciones: [
+              {
+                text: "Editar",
+                variant: "text",
+                icon: "edit",
+                onClick: function() {
+                  console.log("hola mundo Editar");
+                }
+              },
+              {
+                text: "Eliminar",
+                variant: "text",
+                color: "error",
+                icon: "trash",
+                onClick: function() {
+                  console.log("hola mundo eliminar");
+                }
+              }
+            ]
+          },
+          {
+            // checkboxArea: "active",
+            diagnostico: {
+              variant: "p",
+              type: "primary",
+              text:
+                "Afecciones respiratorias debidas a inhalación de gases, humos…"
+            },
+            estado: "",
+            fecha: {
+              size: "",
+              text: "2014-12-24  24:15:00"
+            },
+            eno: {
+              weight: "bold",
+              text: "ENO"
+            },
+            ges: {
+              weight: "bold",
+              text: "GES"
+            },
+            acciones: [
+              {
+                text: "Editar",
+                variant: "text",
+                icon: "edit",
+                onClick: function() {
+                  console.log("hola mundo Editar");
+                }
+              },
+              {
+                text: "Eliminar",
+                variant: "text",
+                color: "error",
+                icon: "trash",
+                onClick: function() {
+                  console.log("hola mundo eliminar");
+                }
+              }
+            ]
+          },
+          {
+            // checkboxArea: "active",
+            diagnostico: {
+              variant: "p",
+              type: "primary",
+              text:
+                "Afecciones respiratorias debidas a inhalación de gases, humos…"
+            },
+            estado: "sospecha",
+            fecha: {
+              size: "",
+              text: "2014-12-24  24:15:00"
+            },
+            eno: {
+              weight: "bold",
+              text: "ENO"
+            },
+            ges: {
+              weight: "bold",
+              text: "GES"
+            },
+            acciones: [
+              {
+                text: "Editar",
+                variant: "text",
+                icon: "edit",
+                onClick: function() {
+                  console.log("hola mundo Editar");
+                }
+              },
+              {
+                text: "Eliminar",
+                variant: "text",
+                color: "error",
+                icon: "trash",
+                onClick: function() {
+                  console.log("hola mundo eliminar");
+                }
+              }
+            ]
+          }
+        ]
+      },
       showModal: false,
       options: [
         { id: 1, name: "Trombosis profunda" },
@@ -228,6 +249,11 @@ export default {
         { id: 3, name: "Hiper mega Trombosis" }
       ]
     };
+  },
+  methods: {
+    mainClick() {
+      console.log("este es un main click");
+    }
   }
 };
 </script>

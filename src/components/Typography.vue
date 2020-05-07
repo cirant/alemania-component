@@ -134,16 +134,16 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .root {
   display: inline;
   margin: 0px;
   font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 0.2rem;
 }
 .main-styles {
   font-weight: inherit;
-  font-family: inherit;
 }
 
 .font16 {

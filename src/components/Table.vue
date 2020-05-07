@@ -1,38 +1,51 @@
 <template>
-  <table class="table" ref="slotContainer">
-    <slot />
-  </table>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th v-for="( column, prop ) in columns" :key="prop">{{ column }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="( row, index ) in rows" :key="index">
+          <td v-for="( _, prop ) in columns" :key="prop">
+            <slot :row="row" :prop="prop">{{ row[ prop ] }}</slot>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Status",
-  props: ["value"],
-  mounted() {
-    this.$nextTick().then(this.fixSlot.bind(this));
-  },
-  methods: {
-    // This is where the magic happens
-    fixSlot() {
-      // // remove all the innerHTML that vue has place where the slot should be
-      // // // replace it with a new slot, if you are using named slot you can just add attributes to the slot
-      this.$refs.slotContainer.innerHTML = "";
-      this.$refs.slotContainer.append(document.createElement("slot"));
-    }
+  name: "Table",
+  props: {
+    columns: { type: Object, required: true },
+    rows: { type: Array, required: true }
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
+.table-responsive {
+  width: 100%;
+  overflow: auto;
+}
 .table {
   border-collapse: collapse;
+  width: 100%;
+  font-family: Helvetica, Arial, sans-serif;
 }
 .table tr {
   border-bottom: 1px solid #e8e8e8;
 }
-.table th {
+.table tr th {
   padding: 16px 8px 18px;
+}
+.table tr td {
+  padding: 8px;
 }
 .table thead {
   background-color: #fafafa;
