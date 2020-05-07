@@ -1,7 +1,7 @@
 
   
 <template>
-  <transition name="modal">
+  <transition name="modal" ref="slotModalContainer">
     <div class="modal-mask">
       <div class="modal-wrapper" @click="closeModal()">
         <div class="modal-container" @click.stop>
@@ -49,8 +49,8 @@ export default {
       this.$emit("closeModal");
     },
     fixSlot() {
-      this.$refs.slotContainer.innerHTML = "";
-      this.$refs.slotContainer.append(document.createElement("slot"));
+      this.$refs.slotModalContainer.innerHTML = "";
+      this.$refs.slotModalContainer.append(document.createElement("slot"));
     }
   }
 };
