@@ -78,6 +78,7 @@ export default {
       this.$emit("selected", this.selected);
     },
     showOptions() {
+      console.log("opciones disponibles", this.options);
       this.searchFilter = "";
       this.optionsShown = true;
     },
@@ -105,9 +106,6 @@ export default {
       }
       this.$emit("filter", this.searchFilter);
     }
-  },
-  mounted() {
-    console.log("recibe", this.options);
   }
 };
 </script>
