@@ -12,7 +12,7 @@
             </slot>
           </div>
 
-          <div class="modal-body" ref="slotModalContainer">
+          <div class="modal-body">
             <slot name="body">default body</slot>
           </div>
 
@@ -38,19 +38,9 @@ export default {
     Buttom,
     Typography
   },
-  mounted() {
-    console.log("==============================");
-    if (process.env.NODE_ENV !== "development") {
-      this.$nextTick().then(this.fixSlot.bind(this));
-    }
-  },
   methods: {
     closeModal() {
       this.$emit("closeModal");
-    },
-    fixSlot() {
-      this.$refs.slotModalContainer.innerHTML = "";
-      this.$refs.slotModalContainer.append(document.createElement("slot"));
     }
   }
 };
