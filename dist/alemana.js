@@ -277,28 +277,6 @@ module.exports = function (R, S) {
 
 /***/ }),
 
-/***/ "159b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var global = __webpack_require__("da84");
-var DOMIterables = __webpack_require__("fdbc");
-var forEach = __webpack_require__("17c2");
-var createNonEnumerableProperty = __webpack_require__("9112");
-
-for (var COLLECTION_NAME in DOMIterables) {
-  var Collection = global[COLLECTION_NAME];
-  var CollectionPrototype = Collection && Collection.prototype;
-  // some Chrome versions have non-configurable methods on DOMTokenList
-  if (CollectionPrototype && CollectionPrototype.forEach !== forEach) try {
-    createNonEnumerableProperty(CollectionPrototype, 'forEach', forEach);
-  } catch (error) {
-    CollectionPrototype.forEach = forEach;
-  }
-}
-
-
-/***/ }),
-
 /***/ "1606":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -325,27 +303,6 @@ var add = __webpack_require__("35d6").default
 module.exports.__inject__ = function (shadowRoot) {
   add("163b87c4", content, shadowRoot)
 };
-
-/***/ }),
-
-/***/ "17c2":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $forEach = __webpack_require__("b727").forEach;
-var arrayMethodIsStrict = __webpack_require__("a640");
-var arrayMethodUsesToLength = __webpack_require__("ae40");
-
-var STRICT_METHOD = arrayMethodIsStrict('forEach');
-var USES_TO_LENGTH = arrayMethodUsesToLength('forEach');
-
-// `Array.prototype.forEach` method implementation
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
-module.exports = (!STRICT_METHOD || !USES_TO_LENGTH) ? function forEach(callbackfn /* , thisArg */) {
-  return $forEach(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-} : [].forEach;
-
 
 /***/ }),
 
@@ -1016,23 +973,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Typography_vue_vue_type_style_index_0_id_6c2599b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Typography_vue_vue_type_style_index_0_id_6c2599b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Typography_vue_vue_type_style_index_0_id_6c2599b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Typography_vue_vue_type_style_index_0_id_6c2599b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_vue_style_loader_index_js_ref_6_oneOf_1_0_node_modules_css_loader_dist_cjs_js_ref_6_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_2_node_modules_postcss_loader_src_index_js_ref_6_oneOf_1_3_node_modules_cache_loader_dist_cjs_js_ref_0_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Typography_vue_vue_type_style_index_0_id_6c2599b2_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "4160":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__("23e7");
-var forEach = __webpack_require__("17c2");
-
-// `Array.prototype.forEach` method
-// https://tc39.github.io/ecma262/#sec-array.prototype.foreach
-$({ target: 'Array', proto: true, forced: [].forEach != forEach }, {
-  forEach: forEach
-});
-
 
 /***/ }),
 
@@ -3786,102 +3726,32 @@ var Tableshadow_component = normalizeComponent(
 )
 
 /* harmony default export */ var Tableshadow = (Tableshadow_component.exports);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TableDiagnostico.vue?vue&type=template&id=32501df4&shadow
-var TableDiagnosticovue_type_template_id_32501df4_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table"},[_c('thead',[(_vm.columns)?_c('tr',_vm._l((_vm.columns),function(column,prop){return _c('th',{key:prop,class:{
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TableDiagnostico.vue?vue&type=template&id=3798f80f&shadow
+var TableDiagnosticovue_type_template_id_3798f80f_shadow_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"table-responsive"},[_c('table',{staticClass:"table"},[_c('thead',[(_vm.columns)?_c('tr',_vm._l((_vm.columns),function(column,prop){return _c('th',{key:prop,class:{
           textCenter: prop==='checkbox'
         }},[(prop === 'checkbox')?_c('input',{key:column,attrs:{"type":"checkbox"},domProps:{"checked":column},on:{"click":function (e){
             _vm.clickAllPrivate(e.target.checked);
-            }}}):_vm._e(),_vm._v(" "+_vm._s(prop !== 'checkbox' ? column : '')+" ")])}),0):_vm._e()]),(_vm.rowStates)?_c('tbody',_vm._l((_vm.rowStates),function(row,index){return _c('tr',{key:index,class:{
-        editinRow: row.checked
+            }}}):_vm._e(),_vm._v(" "+_vm._s(prop !== 'checkbox' ? column : '')+" ")])}),0):_vm._e()]),(_vm.rows)?_c('tbody',_vm._l((_vm.rows),function(row,index){return _c('tr',{key:index,class:{
+        editinRow: _vm.checks.indexOf(index)!==-1
       }},_vm._l((_vm.columns),function(_,prop){return _c('td',{key:prop,class:{
           textCenter: prop==='checkbox'
-        }},[_vm._t("default",[(prop==='checkbox')?_c('input',{key:row.checked,attrs:{"type":"checkbox"},domProps:{"checked":row.checked},on:{"click":function (e){
+        }},[_vm._t("default",[(prop==='checkbox')?_c('input',{key:_vm.checks.indexOf(index)!==-1,attrs:{"type":"checkbox"},domProps:{"checked":_vm.checks.indexOf(index)!==-1},on:{"click":function (e){
                 _vm.clickOnePrivate(index, e.target.checked);
-              }}}):((typeof row[prop]==='string') && prop!=='estado')?_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ]))]):(prop==='acciones')?_c('div',_vm._l((row[ prop ]),function(button){return _c('Buttom',{key:button.text,attrs:{"variant":button.variant,"icon":button.icon,"color":button.color},on:{"onClick":function($event){return button.onClick()}}},[_vm._v(_vm._s(button.text))])}),1):(prop==='estado')?_c('div',[(!row.checked)?_c('Status',{attrs:{"value":row[ prop ]}}):_c('select',{directives:[{name:"model",rawName:"v-model",value:(row[prop]),expression:"row[prop]"}],on:{"change":function($event){var $$selectedVal = Array.prototype.filter.call($event.target.options,function(o){return o.selected}).map(function(o){var val = "_value" in o ? o._value : o.value;return val}); _vm.$set(row, prop, $event.target.multiple ? $$selectedVal : $$selectedVal[0])}}},[_c('option',{attrs:{"value":"alta"}},[_vm._v("Alta")]),_c('option',{attrs:{"value":"confirmado"}},[_vm._v("Confirmado")]),_c('option',{attrs:{"value":"sospecha"}},[_vm._v("Sospecha")]),_c('option',{attrs:{"value":"descartado"}},[_vm._v("Descartado")])])],1):_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ].text))])],{"row":row,"prop":prop})],2)}),0)}),0):_vm._e()])])}
-var TableDiagnosticovue_type_template_id_32501df4_shadow_staticRenderFns = []
+              }}}):((typeof row[prop]==='string') && prop!=='estado')?_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ]))]):(prop==='acciones')?_c('div',_vm._l((row[ prop ]),function(button){return _c('Buttom',{key:button.text,attrs:{"variant":button.variant,"icon":button.icon,"color":button.color},on:{"onClick":function($event){return button.onClick()}}},[_vm._v(_vm._s(button.text))])}),1):(prop==='estado')?_c('div',[_c('Status',{attrs:{"value":row[ prop ]}})],1):_c('Typography',{attrs:{"weight":row[ prop ].weight,"size":row[ prop ].size,"type":row[ prop ].type,"variant":row[ prop ].variant}},[_vm._v(_vm._s(row[ prop ].text))])],{"row":row,"prop":prop})],2)}),0)}),0):_vm._e()])])}
+var TableDiagnosticovue_type_template_id_3798f80f_shadow_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/TableDiagnostico.vue?vue&type=template&id=32501df4&shadow
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
-var es_array_map = __webpack_require__("d81d");
+// CONCATENATED MODULE: ./src/components/TableDiagnostico.vue?vue&type=template&id=3798f80f&shadow
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.for-each.js
-var es_array_for_each = __webpack_require__("4160");
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.index-of.js
+var es_array_index_of = __webpack_require__("c975");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptor.js
-var es_object_get_own_property_descriptor = __webpack_require__("e439");
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
+var es_array_map = __webpack_require__("d81d");
 
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
-var es_object_get_own_property_descriptors = __webpack_require__("dbb4");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.keys.js
-var es_object_keys = __webpack_require__("b64b");
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.for-each.js
-var web_dom_collections_for_each = __webpack_require__("159b");
-
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-
-
-
-
-
-
-
-
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(Object(source), true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(Object(source)).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"cc5d4390-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Status.vue?vue&type=template&id=23e37a5c&scoped=true&
 var Statusvue_type_template_id_23e37a5c_scoped_true_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"container",on:{"click":function($event){return _vm.$emit('onClick')}}},[_c('span',{staticClass:"circle",class:{
     confirm: _vm.value === 'confirmado',
@@ -3946,12 +3816,7 @@ var Status_component = normalizeComponent(
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/TableDiagnostico.vue?vue&type=script&lang=js&shadow
 
 
-//
-//
-//
-//
-//
-//
+
 //
 //
 //
@@ -4050,115 +3915,7 @@ var Status_component = normalizeComponent(
 
   data() {
     return {
-      rowStates: [{
-        checkbox: false,
-        diagnostico: {
-          variant: "p",
-          type: "primary",
-          text: "Afecciones respiratorias debidas a inhalación de gases, humos…"
-        },
-        estado: "confirmado",
-        fecha: {
-          size: "",
-          text: "2014-12-24  24:15:00"
-        },
-        eno: {
-          weight: "bold",
-          text: "ENO"
-        },
-        ges: {
-          weight: "bold",
-          text: "GES"
-        },
-        acciones: [{
-          text: "Editar",
-          variant: "text",
-          icon: "edit",
-          onClick: function onClick() {
-            console.log("hola mundo Editar");
-          }
-        }, {
-          text: "Eliminar",
-          variant: "text",
-          color: "error",
-          icon: "trash",
-          onClick: function onClick() {
-            console.log("hola mundo eliminar");
-          }
-        }]
-      }, {
-        checkbox: false,
-        diagnostico: {
-          variant: "p",
-          type: "primary",
-          text: "Afecciones respiratorias debidas a inhalación de gases, humos…"
-        },
-        estado: "alta",
-        fecha: {
-          size: "",
-          text: "2014-12-24  24:15:00"
-        },
-        eno: {
-          weight: "bold",
-          text: "ENO"
-        },
-        ges: {
-          weight: "bold",
-          text: "GES"
-        },
-        acciones: [{
-          text: "Editar",
-          variant: "text",
-          icon: "edit",
-          onClick: function onClick() {
-            console.log("hola mundo Editar");
-          }
-        }, {
-          text: "Eliminar",
-          variant: "text",
-          color: "error",
-          icon: "trash",
-          onClick: function onClick() {
-            console.log("hola mundo eliminar");
-          }
-        }]
-      }, {
-        checkbox: true,
-        diagnostico: {
-          variant: "p",
-          type: "primary",
-          text: "Afecciones respiratorias debidas a inhalación de gases, humos…"
-        },
-        estado: "sospecha",
-        fecha: {
-          size: "",
-          text: "2014-12-24  24:15:00"
-        },
-        eno: {
-          weight: "bold",
-          text: "ENO"
-        },
-        ges: {
-          weight: "bold",
-          text: "GES"
-        },
-        acciones: [{
-          text: "Editar",
-          variant: "text",
-          icon: "edit",
-          onClick: function onClick() {
-            console.log("hola mundo Editar");
-          }
-        }, {
-          text: "Eliminar",
-          variant: "text",
-          color: "error",
-          icon: "trash",
-          onClick: function onClick() {
-            console.log("hola mundo eliminar");
-          }
-        }]
-      }]
+      checks: []
     };
   },
 
@@ -4182,19 +3939,19 @@ var Status_component = normalizeComponent(
   },
   methods: {
     clickOnePrivate(position, value) {
-      this.rowStates = this.rowStates.map((row, index) => {
-        return _objectSpread2(_objectSpread2({}, row), {}, {
-          checked: index === position ? value : row.checked
-        });
-      });
+      if (value && this.checks.indexOf(position) === -1) {
+        this.checks.push(position);
+      } else {
+        this.checks = this.checks.filter(val => val !== position);
+      }
     },
 
     clickAllPrivate(value) {
-      this.rowStates = this.rowStates.map(row => {
-        return _objectSpread2(_objectSpread2({}, row), {}, {
-          checked: value
-        });
-      });
+      this.checks = [];
+
+      if (value) {
+        this.checks = this.rows.map((el, index) => index);
+      }
     }
 
   }
@@ -4216,8 +3973,8 @@ if (style0.__inject__) style0.__inject__(context)
 
 var TableDiagnosticoshadow_component = normalizeComponent(
   components_TableDiagnosticovue_type_script_lang_js_shadow,
-  TableDiagnosticovue_type_template_id_32501df4_shadow_render,
-  TableDiagnosticovue_type_template_id_32501df4_shadow_staticRenderFns,
+  TableDiagnosticovue_type_template_id_3798f80f_shadow_render,
+  TableDiagnosticovue_type_template_id_3798f80f_shadow_staticRenderFns,
   false,
   TableDiagnosticoshadow_injectStyles,
   null,
@@ -6358,27 +6115,6 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ "b64b":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var toObject = __webpack_require__("7b0b");
-var nativeKeys = __webpack_require__("df75");
-var fails = __webpack_require__("d039");
-
-var FAILS_ON_PRIMITIVES = fails(function () { nativeKeys(1); });
-
-// `Object.keys` method
-// https://tc39.github.io/ecma262/#sec-object.keys
-$({ target: 'Object', stat: true, forced: FAILS_ON_PRIMITIVES }, {
-  keys: function keys(it) {
-    return nativeKeys(toObject(it));
-  }
-});
-
-
-/***/ }),
-
 /***/ "b727":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6647,6 +6383,36 @@ var add = __webpack_require__("35d6").default
 module.exports.__inject__ = function (shadowRoot) {
   add("34aa3e20", content, shadowRoot)
 };
+
+/***/ }),
+
+/***/ "c975":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__("23e7");
+var $indexOf = __webpack_require__("4d64").indexOf;
+var arrayMethodIsStrict = __webpack_require__("a640");
+var arrayMethodUsesToLength = __webpack_require__("ae40");
+
+var nativeIndexOf = [].indexOf;
+
+var NEGATIVE_ZERO = !!nativeIndexOf && 1 / [1].indexOf(1, -0) < 0;
+var STRICT_METHOD = arrayMethodIsStrict('indexOf');
+var USES_TO_LENGTH = arrayMethodUsesToLength('indexOf', { ACCESSORS: true, 1: 0 });
+
+// `Array.prototype.indexOf` method
+// https://tc39.github.io/ecma262/#sec-array.prototype.indexof
+$({ target: 'Array', proto: true, forced: NEGATIVE_ZERO || !STRICT_METHOD || !USES_TO_LENGTH }, {
+  indexOf: function indexOf(searchElement /* , fromIndex = 0 */) {
+    return NEGATIVE_ZERO
+      // convert -0 to +0
+      ? nativeIndexOf.apply(this, arguments) || 0
+      : $indexOf(this, searchElement, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
 
 /***/ }),
 
@@ -7068,37 +6834,6 @@ module.exports =
 
 /***/ }),
 
-/***/ "dbb4":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var DESCRIPTORS = __webpack_require__("83ab");
-var ownKeys = __webpack_require__("56ef");
-var toIndexedObject = __webpack_require__("fc6a");
-var getOwnPropertyDescriptorModule = __webpack_require__("06cf");
-var createProperty = __webpack_require__("8418");
-
-// `Object.getOwnPropertyDescriptors` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptors
-$({ target: 'Object', stat: true, sham: !DESCRIPTORS }, {
-  getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object) {
-    var O = toIndexedObject(object);
-    var getOwnPropertyDescriptor = getOwnPropertyDescriptorModule.f;
-    var keys = ownKeys(O);
-    var result = {};
-    var index = 0;
-    var key, descriptor;
-    while (keys.length > index) {
-      descriptor = getOwnPropertyDescriptor(O, key = keys[index++]);
-      if (descriptor !== undefined) createProperty(result, key, descriptor);
-    }
-    return result;
-  }
-});
-
-
-/***/ }),
-
 /***/ "dbec":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -7336,29 +7071,6 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
-
-
-/***/ }),
-
-/***/ "e439":
-/***/ (function(module, exports, __webpack_require__) {
-
-var $ = __webpack_require__("23e7");
-var fails = __webpack_require__("d039");
-var toIndexedObject = __webpack_require__("fc6a");
-var nativeGetOwnPropertyDescriptor = __webpack_require__("06cf").f;
-var DESCRIPTORS = __webpack_require__("83ab");
-
-var FAILS_ON_PRIMITIVES = fails(function () { nativeGetOwnPropertyDescriptor(1); });
-var FORCED = !DESCRIPTORS || FAILS_ON_PRIMITIVES;
-
-// `Object.getOwnPropertyDescriptor` method
-// https://tc39.github.io/ecma262/#sec-object.getownpropertydescriptor
-$({ target: 'Object', stat: true, forced: FORCED, sham: !DESCRIPTORS }, {
-  getOwnPropertyDescriptor: function getOwnPropertyDescriptor(it, key) {
-    return nativeGetOwnPropertyDescriptor(toIndexedObject(it), key);
-  }
-});
 
 
 /***/ }),
