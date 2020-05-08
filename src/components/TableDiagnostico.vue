@@ -23,12 +23,12 @@
           </th>
         </tr>
       </thead>
-      <tbody v-if="rowStates">
+      <tbody v-if="rows">
         <tr
-          v-for="( row, index ) in rowStates"
+          v-for="( row, index ) in rows"
           :key="index"
           v-bind:class="{
-          editinRow: row.checked
+          editinRow: checks.indexOf(index)!==-1
         }"
         >
           <td
@@ -41,9 +41,9 @@
             <slot :row="row" :prop="prop">
               <input
                 v-if="prop==='checkbox'"
-                :key="row.checked"
+                :key="checks.indexOf(index)!==-1"
                 type="checkbox"
-                :checked="row.checked"
+                :checked="checks.indexOf(index)!==-1"
                 @click="(e)=>{
                   clickOnePrivate(index, e.target.checked);
                 }"
@@ -66,13 +66,7 @@
                 >{{button.text}}</Buttom>
               </div>
               <div v-else-if="prop==='estado'">
-                <Status v-if="!row.checked" :value="row[ prop ]" />
-                <select v-model="row[prop]" v-else>
-                  <option value="alta">Alta</option>
-                  <option value="confirmado">Confirmado</option>
-                  <option value="sospecha">Sospecha</option>
-                  <option value="descartado">Descartado</option>
-                </select>
+                <Status :value="row[ prop ]" />
               </div>
               <Typography
                 v-else
@@ -103,131 +97,7 @@ export default {
   },
   data() {
     return {
-      rowStates: [
-        {
-          checkbox: false,
-          diagnostico: {
-            variant: "p",
-            type: "primary",
-            text:
-              "Afecciones respiratorias debidas a inhalación de gases, humos…"
-          },
-          estado: "confirmado",
-          fecha: {
-            size: "",
-            text: "2014-12-24  24:15:00"
-          },
-          eno: {
-            weight: "bold",
-            text: "ENO"
-          },
-          ges: {
-            weight: "bold",
-            text: "GES"
-          },
-          acciones: [
-            {
-              text: "Editar",
-              variant: "text",
-              icon: "edit",
-              onClick: function() {
-                console.log("hola mundo Editar");
-              }
-            },
-            {
-              text: "Eliminar",
-              variant: "text",
-              color: "error",
-              icon: "trash",
-              onClick: function() {
-                console.log("hola mundo eliminar");
-              }
-            }
-          ]
-        },
-        {
-          checkbox: false,
-          diagnostico: {
-            variant: "p",
-            type: "primary",
-            text:
-              "Afecciones respiratorias debidas a inhalación de gases, humos…"
-          },
-          estado: "alta",
-          fecha: {
-            size: "",
-            text: "2014-12-24  24:15:00"
-          },
-          eno: {
-            weight: "bold",
-            text: "ENO"
-          },
-          ges: {
-            weight: "bold",
-            text: "GES"
-          },
-          acciones: [
-            {
-              text: "Editar",
-              variant: "text",
-              icon: "edit",
-              onClick: function() {
-                console.log("hola mundo Editar");
-              }
-            },
-            {
-              text: "Eliminar",
-              variant: "text",
-              color: "error",
-              icon: "trash",
-              onClick: function() {
-                console.log("hola mundo eliminar");
-              }
-            }
-          ]
-        },
-        {
-          checkbox: true,
-          diagnostico: {
-            variant: "p",
-            type: "primary",
-            text:
-              "Afecciones respiratorias debidas a inhalación de gases, humos…"
-          },
-          estado: "sospecha",
-          fecha: {
-            size: "",
-            text: "2014-12-24  24:15:00"
-          },
-          eno: {
-            weight: "bold",
-            text: "ENO"
-          },
-          ges: {
-            weight: "bold",
-            text: "GES"
-          },
-          acciones: [
-            {
-              text: "Editar",
-              variant: "text",
-              icon: "edit",
-              onClick: function() {
-                console.log("hola mundo Editar");
-              }
-            },
-            {
-              text: "Eliminar",
-              variant: "text",
-              color: "error",
-              icon: "trash",
-              onClick: function() {
-                console.log("hola mundo eliminar");
-              }
-            }
-          ]
-        }
-      ]
+      checks: []
     };
   },
   props: {
@@ -238,20 +108,17 @@ export default {
   },
   methods: {
     clickOnePrivate(position, value) {
-      this.rowStates = this.rowStates.map((row, index) => {
-        return {
-          ...row,
-          checked: index === position ? value : row.checked
-        };
-      });
+      if (value && this.checks.indexOf(position) === -1) {
+        this.checks.push(position);
+      } else {
+        this.checks = this.checks.filter(val => val !== position);
+      }
     },
     clickAllPrivate(value) {
-      this.rowStates = this.rowStates.map(row => {
-        return {
-          ...row,
-          checked: value
-        };
-      });
+      this.checks = [];
+      if (value) {
+        this.checks = this.rows.map((el, index) => index);
+      }
     }
   }
 };
