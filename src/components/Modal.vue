@@ -167,6 +167,13 @@ export default {
   transition: all 0.3s ease;
 }
 
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .modal-container {
+    width: 90%;
+  }
+}
+
 .modal-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.09);
   min-height: 56px;
