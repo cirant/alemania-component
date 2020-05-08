@@ -116,10 +116,20 @@ export default {
   data: function() {
     return {
       options: [
-        { id: 1, name: "Trombosis profunda", type: "GES" },
-        { id: 2, name: "Trombosis mega profunda", type: "ENO" },
-        { id: 3, name: "Hiper mega Trombosis", type: "ENO" },
-        { id: 3, name: "Otra info", type: "GES" }
+        { id: 1, name: "Embolia y trombosis arteriales", type: "GES" },
+        { id: 3, name: "Enfermedades de los vasos capilares", type: "ENO" },
+        { id: 4, name: "Otras embolias y trombosis venosas", type: "GES" },
+        { id: 5, name: "Trombosis de la vena porta", type: "GES" },
+        {
+          id: 6,
+          name: "Venas varicosas de extremidades inferiores",
+          type: "GES"
+        },
+        {
+          id: 2,
+          name: "Otros trastornos arteriales o arteriolares",
+          type: "ENO"
+        }
       ],
       showNotifications: false,
       userIsSelecting: true,
