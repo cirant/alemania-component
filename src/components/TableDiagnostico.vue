@@ -66,7 +66,11 @@
                 >{{button.text}}</Buttom>
               </div>
               <div v-else-if="prop==='estado'">
-                <Status :value="row[ prop ]" />
+                <HandleState
+                  :index="index"
+                  :editing="checks.indexOf(index)!==-1"
+                  :currentValue="row[ prop ]"
+                />
               </div>
               <Typography
                 v-else
@@ -86,18 +90,19 @@
 <script>
 import Typography from "./Typography";
 import Buttom from "./Button.vue";
-import Status from "./Status";
+import HandleState from "./HandleState";
 
 export default {
   name: "Table",
   components: {
     Typography,
     Buttom,
-    Status
+    HandleState
   },
   data() {
     return {
-      checks: []
+      checks: [],
+      statusChanged: {}
     };
   },
   props: {
