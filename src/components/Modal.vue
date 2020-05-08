@@ -14,9 +14,11 @@
 
           <div class="modal-body">
             <div class="selection-container" v-if="userIsSelecting">
-              <Select @selected="updateSelector" :options="options" />
+              <div class="select-wrapper">
+                <Select @selected="updateSelector" :options="options" />
+              </div>
               <div class="notifications" v-if="showNotifications">
-                <NotificationTag type="informacion">
+                <NotificationTag type="informacion" class="mb">
                   <Typography variant="p" slot="message" size="12">Patología GES.</Typography>
                   <Typography variant="p" slot="action" size="12">Revisar</Typography>
                 </NotificationTag>
@@ -31,8 +33,10 @@
                 </NotificationTag>
               </div>
               <div>
-                <Typography>Problema de salud:</Typography>
-                <TextArea @textUpdated="updateTextField" />
+                <div class="text-area-container">
+                  <Typography variant="p" size="12">Problema de salud:</Typography>
+                  <TextArea @textUpdated="updateTextField" />
+                </div>
               </div>
             </div>
             <div class="result-container" v-else>
@@ -49,13 +53,13 @@
             </div>
           </div>
 
-          <div class="modal-footer">
+          <div>
             <slot name="footer">
-              <div v-if="userIsSelecting">
+              <div v-if="userIsSelecting" class="modal-footer">
                 <Buttom variant="outlined" @onClick="closeModal()">Cancelar</Buttom>
                 <Buttom @onClick="addHealthCondition()">Agregar</Buttom>
               </div>
-              <div v-else>
+              <div v-else class="modal-footer">
                 <Buttom @onClick="endProcess()">Ir a la ficha</Buttom>
               </div>
             </slot>
@@ -173,10 +177,27 @@ export default {
 .modal-body {
   margin: 20px 0;
   padding: 26px 18px;
+  min-height: 244px;
+  display: flex;
+}
+
+.selection-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.text-area-container {
+  text-align: left;
 }
 
 .modal-default-button {
   float: right;
+}
+
+.mb {
+  margin-bottom: 5px;
 }
 
 /*
